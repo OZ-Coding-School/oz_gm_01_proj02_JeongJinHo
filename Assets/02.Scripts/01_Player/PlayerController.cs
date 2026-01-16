@@ -1,16 +1,32 @@
+using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private PlayerData playerData;
+
     [SerializeField] private float moveSpeed = 50.0f;
+    [SerializeField] private float rotateAngle = 45.0f;//고개돌릴때
+    [SerializeField] private float rotateSpeed = 2.0f;
+
+    private Quaternion targetRotation;
 
     //캐릭터,포탑,총알 다 마우스보면 추상으로 하는게 좋겠다
     //캐릭터가 마우스방향으로 몸을 트는 애니메이션구하기?
+    [SerializeField] private Healthbar healthbar;
 
+    private void Start()
+    {
+        targetRotation= transform.rotation;
+        playerData.MaxHp();
+
+
+        
+    }
     private void Update()
     {
         Move();
-        LookMouse();
+        //LookMouse();
     }
 
     private void Move()
@@ -20,23 +36,66 @@ public class PlayerController : MonoBehaviour
         transform.position+=moveDir*moveSpeed*Time.deltaTime;
     }
     private void LookMouse()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Plane plane = new Plane(Vector3.up, Vector3.zero);
-        float distance;
+    {     
+        Vector3 mousePos = Input.mousePosition;
 
-        if(plane.Raycast(ray, out distance))
+        mousePos.z = Vector3.Distance(Camera.main.transform.position, transform.position);
+        Vector3 worldMousePos = Camera.main.ScreenToWorldPoint(mousePos);
+
+        Vector3 lookDir = worldMousePos - transform.position;
+        lookDir.y = 0;
+        
+        if (lookDir != Vector3.zero)
         {
-            Vector3 target = ray.GetPoint(distance);
-            Vector3 lookDir = target - transform.position;
-            lookDir.y = 0;
-            if (lookDir != Vector3.zero)
+
+            Quaternion quaternion=Quaternion.LookRotation(lookDir);
+
+            float angle = Quaternion.Angle(targetRotation, quaternion);
+
+            if (angle > rotateAngle)
             {
-                transform.rotation=Quaternion.LookRotation(lookDir);
+                quaternion = Quaternion.RotateTowards(targetRotation, quaternion, rotateAngle);
             }
-            
+
+            transform.rotation = Quaternion.Slerp(transform.rotation,quaternion,rotateSpeed);
+            //transform.rotation = Quaternion.LookRotation(lookDir);
         }
     }
+    public void TakeDamage(float amount)
+    {
+        if (playerData != null)
+        {
+            playerData.playerHp -= amount;
+
+
+            if (healthbar != null)
+            {
+                float hpRatio=playerData.playerHp / playerData.maxHp;
+                healthbar.SetHealthBar(hpRatio);
+            }
+
+            if(playerData.playerHp <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+
+
+    }
     
+
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Enemy"))
+    //    {
+    //        EnemyBase enemy=collision.gameObject.GetComponent<EnemyBase>();
+
+    //        if (enemy != null)
+    //        {
+                
+    //        }
+    //    }
+    //}
+
 
 }

@@ -30,7 +30,11 @@ public class MachineGun : WeaponBase
             dir = ray.direction;
         }
         GameObject bulletObj=Instantiate(weaponData.projectilePrefab, firePoint.position, Quaternion.LookRotation(dir));
-
+        Projectile projectile=bulletObj.GetComponent<Projectile>();
+        if(projectile != null)
+        {
+            projectile.Setup(weaponData.attackSpeed, weaponData.damage, dir);
+        }
 
         lastFireTime =Time.time;
     }

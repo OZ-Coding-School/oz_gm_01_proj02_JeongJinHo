@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Weapon_GR
   m_EditorClassIdentifier: 
   weaponName: Machine Gun
+  weaponPrefab: {fileID: 1809862171833787969, guid: 80bdd67f66247bb42964e80b3f7ecee0, type: 3}
   projectilePrefab: {fileID: 1363136202702081121, guid: 078919ce7b2a85447abb17adee0d7489, type: 3}
   fireRate: 10
-  attackSpeed: 10
+  attackSpeed: 500
   damage: 10

@@ -10,7 +10,7 @@ public class WeaponData : ScriptableObject
     [SerializeField] public GameObject projectilePrefab;
     [SerializeField] public float fireRate;
     [SerializeField] public float attackSpeed;
-    [SerializeField] public int damage;
+    [SerializeField] public float damage;
 
 
 

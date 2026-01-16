@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    [SerializeField]private WeaponData weaponData;
+
     private float damage;
     private Rigidbody rb;
 
@@ -9,6 +11,8 @@ public class Projectile : MonoBehaviour
     //{
     //    rb=GetComponent<Rigidbody>();
     //}
+
+
     public void Setup(float speed,float damage,Vector3 dir)
     {
         this.damage = damage;
@@ -22,12 +26,14 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject, 5f); // 5ÃÊ ÈÄ¿¡ ÆÄ±«
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if(other.CompareTag("Enemy"))
-    //    {
-    //        Debug.Log($"Hit Enemy for {damage} damage!");
-    //        Destroy(gameObject); // Ãæµ¹ ÈÄ ÆÄ±«
-    //    }
-    //}
+    private void OnTriggerEnter(Collider other)
+    {
+        EnemyBase enemy=other.GetComponent<EnemyBase>();
+
+        if(enemy != null)
+        {
+            enemy.TakeDamage(weaponData.damage);
+            Destroy(gameObject);
+        }
+    }
 }

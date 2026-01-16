@@ -284,14 +284,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3588740712655418591}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bec139ac60250334fac539ffb2ee2d86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   weaponData: {fileID: 11400000, guid: b5efc367a7c313c418bdc7cc1832cab4, type: 2}
   firePoint: {fileID: 4928804987544825784}
-  mgPrefab: {fileID: 3588740712655418591}
 --- !u!1 &5008140733938105423
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,8 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26b9480d918633a4291c796f6f835535, type: 3}
-  m_Name: PlayerData
+  m_Script: {fileID: 11500000, guid: 5c28b3773961a574ba947e19473e907e, type: 3}
+  m_Name: RangeEnemy
   m_EditorClassIdentifier: 
-  maxHp: 1000
-  playerHp: 730
+  enemyName: RangeEnemy
+  enemyPrefab: {fileID: 6344612964349603796, guid: 61baad46e61c22c4c8dc9ce7573538db, type: 3}
+  moveSpeed: 100
+  maxHealth: 10
+  attackDamage: 10

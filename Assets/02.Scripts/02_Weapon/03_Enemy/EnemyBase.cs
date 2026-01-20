@@ -24,7 +24,7 @@ public abstract class EnemyBase : MonoBehaviour
     protected virtual void Die()
     {
         isDead = true;
-        Debug.Log($"{enemyData.enemyName} has died.");
+        
         // 추가적인 죽음 처리 로직 (예: 애니메이션 재생, 아이템 드롭 등)
         Destroy(gameObject);
     }

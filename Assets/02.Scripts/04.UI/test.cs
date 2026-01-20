@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class test : MonoBehaviour
 {
@@ -22,4 +24,10 @@ public class test : MonoBehaviour
     {
         weaponManager.EquipGR(weaponData);
     }
+
+    public void OnClickRestart()
+    {
+        SceneManager.LoadScene("05.BattleScene");
+    }
+
 }

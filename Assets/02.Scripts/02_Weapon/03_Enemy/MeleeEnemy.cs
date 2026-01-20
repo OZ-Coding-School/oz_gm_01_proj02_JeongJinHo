@@ -42,14 +42,14 @@ public class MeleeEnemy : EnemyBase
             }
         }
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            Attack();
-            Die();
-        }
-    }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Player"))
+    //    {
+    //        Attack();
+    //        Die();
+    //    }
+    //}
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))

@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01.Scenes/05.BattleScene.unity
     guid: 4bbfc2dceafe85943b320ceb9f66ecc6
+  - enabled: 1
+    path: Assets/01.Scenes/01.MainLobby.unity
+    guid: f424abf0849c5a44aabf798eecd0f0c8
+  - enabled: 1
+    path: Assets/01.Scenes/02.Armory.unity
+    guid: d21bcd404b1f1594e949ea822d4b4927
   m_configObjects: {}

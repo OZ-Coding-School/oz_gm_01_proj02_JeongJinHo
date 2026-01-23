@@ -2,15 +2,11 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField]private WeaponData weaponData;
+    //[SerializeField]private WeaponData weaponData;
 
     private float damage;
     private Rigidbody rb;
 
-    //private void Awake()
-    //{
-    //    rb=GetComponent<Rigidbody>();
-    //}
 
 
     public void Setup(float speed,float damage,Vector3 dir)
@@ -32,8 +28,9 @@ public class Projectile : MonoBehaviour
 
         if(enemy != null)
         {
-            enemy.TakeDamage(weaponData.damage);
+            enemy.TakeDamage(this.damage);
             Destroy(gameObject);
+            Debug.Log("Projectile hit enemy for " + damage + " damage.");
         }
     }
 }

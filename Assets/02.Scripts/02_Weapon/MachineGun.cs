@@ -3,8 +3,13 @@ using UnityEngine;
 public class MachineGun : WeaponBase
 {
     [SerializeField] private Transform firePoint;
-    
 
+    [SerializeField] private WeaponLevelUp weaponLevelUp;
+
+    private void Start()
+    {
+        weaponLevelUp = Object.FindAnyObjectByType<WeaponLevelUp>();
+    }
     private void Update()
     {
         if (Input.GetMouseButton(0))
@@ -31,9 +36,14 @@ public class MachineGun : WeaponBase
         }
         GameObject bulletObj=Instantiate(weaponData.projectilePrefab, firePoint.position, Quaternion.LookRotation(dir));
         Projectile projectile=bulletObj.GetComponent<Projectile>();
+        
+
         if(projectile != null)
         {
-            projectile.Setup(weaponData.attackSpeed, weaponData.damage, dir);
+            float damage = weaponLevelUp.CurrentDamage();
+            projectile.Setup(weaponData.attackSpeed, damage, dir);
+            
+            Debug.Log("Projectile fired with damage: " + damage);
         }
 
         lastFireTime =Time.time;

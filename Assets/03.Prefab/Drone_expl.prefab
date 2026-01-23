@@ -172,6 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 989dbcbd759c9f24f96458f6d72e423d, type: 2}
+  dropGold: 15
   target: {fileID: 0}
 --- !u!136 &3471950226496654183
 CapsuleCollider:

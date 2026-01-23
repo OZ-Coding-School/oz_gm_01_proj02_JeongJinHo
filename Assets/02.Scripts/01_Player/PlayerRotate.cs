@@ -30,6 +30,11 @@ public class PlayerRotate : MonoBehaviour
     }
     private void LookMouse()
     {
+        if(Time.timeScale==0)
+        {
+            return;
+        }
+
         Vector3 mousePos = Input.mousePosition;
 
         mousePos.z = Vector3.Distance(Camera.main.transform.position, transform.position);
